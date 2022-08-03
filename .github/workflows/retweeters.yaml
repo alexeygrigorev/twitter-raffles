@@ -1,0 +1,20 @@
+name: find_retweeters
+on:
+  schedule:
+    - cron: '5 * * * *'
+  workflow_dispatch:
+    #
+jobs:
+  find_retweeters:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - run: pip install requests
+      - uses: actions/checkout@v2
+      - run: python retweeters.py
+        env:
+          TWITTER_KEY: ${{ secrets.TWITTER_KEY }}
+          TWITTER_SECRET: ${{ secrets.TWITTER_SECRET }}
+      - uses: EndBug/add-and-commit@v8

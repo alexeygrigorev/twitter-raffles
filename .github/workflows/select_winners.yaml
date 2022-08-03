@@ -1,0 +1,21 @@
+name: select_winners
+on:
+  workflow_dispatch:
+    inputs:
+      tweet_url:
+        description: 'Tweet URL'     
+        required: true
+jobs:
+  select_winners:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - run: pip install requests
+      - uses: actions/checkout@v2
+      - run: python select_winners.py ${{ github.event.inputs.tweet_url }}
+        env:
+          TWITTER_KEY: ${{ secrets.TWITTER_KEY }}
+          TWITTER_SECRET: ${{ secrets.TWITTER_SECRET }}
+      - uses: EndBug/add-and-commit@v8

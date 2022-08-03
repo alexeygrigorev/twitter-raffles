@@ -74,8 +74,6 @@ def remove_from_file(tweet_id_to_delete, tweets_file=config.tweets_file):
             f_out.write(f'{handle},{tweet_id}\n')
 
 
-
-
 def parse_url(url):
     tokens = url.split('/')
     handle = tokens[-3]

@@ -44,8 +44,11 @@ def save_retweeters(tweet_id, token):
 
 
 def main():    
-    auth_token = util.get_twitter_auth_token()
     tweets = util.read_tweet_file()
+    if len(tweets) == 0:
+        return
+
+    auth_token = util.get_twitter_auth_token()
 
     for _, tweet_id in tweets:
         print(f'processing {tweet_id}...')
