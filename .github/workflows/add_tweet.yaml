@@ -15,4 +15,8 @@ jobs:
       - run: pip install requests
       - uses: actions/checkout@v2
       - run: python add_tweet.py ${{ github.event.inputs.tweet_url }}
+      - run: python retweeters.py
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
       - uses: EndBug/add-and-commit@v8
