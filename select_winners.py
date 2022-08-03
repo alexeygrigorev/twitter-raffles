@@ -32,7 +32,7 @@ def main(remove=True):
     token = util.get_twitter_auth_token()
     folowers = util.get_twitter_followers(handle, token)
 
-    retweets_folder = Path(f'{tweet_id}/')
+    retweets_folder = Path(f'retweets/{tweet_id}/')
     
     files = sorted(retweets_folder.glob('*.json'))
     retweeters = read_all_retweeters(files)

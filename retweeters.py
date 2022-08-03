@@ -34,7 +34,7 @@ def save_retweeters(tweet_id, token):
 
     ts = int(time())
 
-    key = Path(f'{tweet_id}/{ts}.json')
+    key = Path(f'retweets/{tweet_id}/{ts}.json')
     key.parent.mkdir(parents=True, exist_ok=True)
 
     with open(key, 'wt') as f_out:
