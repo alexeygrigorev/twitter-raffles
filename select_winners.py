@@ -63,6 +63,8 @@ def main(remove=True):
         for file in files:
             file.unlink()
         retweets_folder.rmdir()
+    
+    util.remove_from_file(tweet_id)
 
 
 if __name__ == '__main__':
